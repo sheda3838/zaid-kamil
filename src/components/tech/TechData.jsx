@@ -41,6 +41,7 @@ import iconCsharp from "../../assets/icons/csharp.png";
 import iconPython from "../../assets/icons/python.png";
 import iconRestApi from "../../assets/icons/rest-api.png";
 import iconSqlServer from "../../assets/icons/sql-server.png";
+import iconSqlite from "../../assets/icons/sqlite.png";
 
 // Fallback lucide icons
 import { Database, Code2, Globe } from "lucide-react";
@@ -79,7 +80,7 @@ const getTechIcon = (name) => {
     "MongoDB": <img src={iconMongo} alt="MongoDB" className="w-5 h-5 object-contain" />,
     "MySQL": <img src={iconMysql} alt="MySQL" className="w-5 h-5 object-contain bg-white rounded p-[2px]" />,
     "SQL Server": <img src={iconSqlServer} alt="SQL Server" className="w-5 h-5 object-contain" />,
-    "SQLite": <Database className="w-5 h-5 text-blue-400" />,
+    "SQLite": <img src={iconSqlite} alt="SQLite" className="w-5 h-5 object-contain" />,
     "TiDB Cloud": <img src={iconTidb} alt="TiDB Cloud" className="w-5 h-5 object-contain" />,
     "Auth.js": <img src={iconAuthjs} alt="Auth.js" className="w-5 h-5 object-contain" />,
     "Pusher": <img src={iconPusher} alt="Pusher" className="w-5 h-5 object-contain" />,

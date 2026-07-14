@@ -9,6 +9,8 @@ const TimelineSection = React.lazy(() => import("./components/timeline/TimelineS
 const FeaturedWorkSection = React.lazy(() => import("./components/work/FeaturedWorkSection").then(module => ({ default: module.FeaturedWorkSection })))
 const TechArsenalSection = React.lazy(() => import("./components/tech/TechArsenalSection").then(module => ({ default: module.TechArsenalSection })))
 const AcademicJourneySection = React.lazy(() => import("./components/academic/AcademicJourneySection").then(module => ({ default: module.AcademicJourneySection })))
+const ContactSection = React.lazy(() => import("./components/contact/ContactSection").then(module => ({ default: module.ContactSection })))
+const Footer = React.lazy(() => import("./components/footer/Footer").then(module => ({ default: module.Footer })))
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
             <FeaturedWorkSection />
             <TechArsenalSection />
             <AcademicJourneySection />
+            <ContactSection />
+            <Footer />
           </Suspense>
         </main>
       </Background>
