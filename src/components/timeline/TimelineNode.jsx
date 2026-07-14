@@ -30,16 +30,9 @@ export function TimelineNode({ data, index, total }) {
         <div className="relative z-10 flex items-center justify-center w-12 h-12 shrink-0">
           <motion.div 
             {...nodeAnimation}
-            className="relative flex items-center justify-center w-10 h-10 rounded-full border border-blue-500/50 bg-background/95 z-10"
+            className="relative flex items-center justify-center w-10 h-10 rounded-full border border-blue-500/50 bg-background/95 z-10 shadow-[0_0_15px_rgba(59,130,246,0.3)]"
           >
             <Icon className="w-4 h-4 text-foreground" />
-            <motion.div 
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="absolute inset-0 rounded-full bg-blue-500/20 blur-md -z-10 will-change-opacity"
-            />
           </motion.div>
         </div>
 
@@ -58,16 +51,9 @@ export function TimelineNode({ data, index, total }) {
         <div className="absolute left-[22px] top-8 -translate-x-1/2 z-10 flex items-center justify-center w-10 h-10 shrink-0">
           <motion.div 
             {...nodeAnimation}
-            className="relative flex items-center justify-center w-10 h-10 rounded-full border border-blue-500/50 bg-background/95 z-10"
+            className="relative flex items-center justify-center w-10 h-10 rounded-full border border-blue-500/50 bg-background/95 z-10 shadow-[0_0_15px_rgba(59,130,246,0.3)]"
           >
             <Icon className="w-4 h-4 text-foreground" />
-            <motion.div 
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="absolute inset-0 rounded-full bg-blue-500/20 blur-md -z-10 will-change-opacity"
-            />
           </motion.div>
         </div>
 

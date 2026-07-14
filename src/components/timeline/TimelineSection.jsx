@@ -53,11 +53,11 @@ export function TimelineSection() {
         {/* The Glowing Progress Line */}
         <motion.div 
           style={{ scaleY, originY: 0 }}
-          className="absolute left-[22px] md:left-1/2 top-0 bottom-0 w-[3px] bg-gradient-to-b from-blue-500 via-purple-500 to-transparent -translate-x-1/2 z-0 will-change-transform"
+          className="absolute left-[22px] md:left-1/2 top-0 bottom-0 w-[3px] bg-gradient-to-b from-blue-500 via-purple-500 to-transparent -translate-x-1/2 z-0"
         />
         <motion.div 
           style={{ scaleY, originY: 0 }}
-          className="absolute left-[22px] md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-blue-400 to-purple-400 -translate-x-1/2 z-0 will-change-transform"
+          className="absolute left-[22px] md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-blue-400 to-purple-400 -translate-x-1/2 z-0"
         />
 
         {/* Timeline Nodes */}
