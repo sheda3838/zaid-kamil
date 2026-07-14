@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { X, ExternalLink, Code2, ShieldAlert, Lightbulb } from "lucide-react"
 import { ProjectGallery } from "./ProjectGallery"
@@ -9,7 +10,24 @@ const GithubIcon = ({ className }) => (
   </svg>
 )
 
-export function ExpandedProject({ project, onClose }) {
+export const ExpandedProject = React.memo(function ExpandedProject({ project, onClose }) {
+  const [showContent, setShowContent] = useState(false)
+  
+  useEffect(() => {
+    // Wait until the layout expansion animation finishes before rendering the heavy text body
+    const timer = setTimeout(() => setShowContent(true), 350)
+    return () => clearTimeout(timer)
+  }, [])
+
+  const handleClose = (e) => {
+    if (e) e.stopPropagation()
+    // Hide heavy content instantly to make the exit layout animation buttery smooth
+    setShowContent(false)
+    setTimeout(() => {
+      onClose()
+    }, 10)
+  }
+
   if (!project) return null
 
   return (
@@ -17,18 +35,21 @@ export function ExpandedProject({ project, onClose }) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-10 bg-background/80 backdrop-blur-sm"
-      onClick={onClose}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-10 bg-background/95"
+      onClick={handleClose}
     >
       <motion.div
-        layoutId={`card-${project.id}`}
+        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.95, y: 20 }}
+        transition={{ duration: 0.4, ease: [0.32, 0.72, 0, 1] }}
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-[1200px] max-h-[90vh] overflow-y-auto overflow-x-hidden flex flex-col rounded-[2.5rem] border border-border/50 bg-background/90 shadow-2xl shadow-blue-500/10 custom-scrollbar"
+        className="relative w-full max-w-[1200px] max-h-[90vh] overflow-y-auto overflow-x-hidden flex flex-col rounded-[2.5rem] border border-border/50 bg-background shadow-2xl shadow-blue-500/10 custom-scrollbar will-change-scroll"
       >
         {/* Close Button */}
         <button
-          onClick={onClose}
-          className="absolute top-6 right-6 z-50 p-2 rounded-full bg-background/50 backdrop-blur-md border border-border/50 text-foreground hover:bg-foreground hover:text-background transition-all"
+          onClick={handleClose}
+          className="absolute top-6 right-6 z-50 p-2 rounded-full bg-background border border-border/50 text-foreground hover:bg-foreground hover:text-background transition-all shadow-md"
         >
           <X className="w-6 h-6" />
         </button>
@@ -43,7 +64,7 @@ export function ExpandedProject({ project, onClose }) {
 
             {project.mobileImage && (
               <div className="relative w-[25%] max-w-[160px] aspect-[9/19] rounded-[2rem] border-[6px] border-zinc-800 bg-black shadow-2xl overflow-hidden z-10 hidden sm:block flex-shrink-0">
-                <img src={project.mobileImage} className="w-full h-full object-cover" alt="Mobile View" />
+                <img src={project.mobileImage} className="w-full h-full object-cover" alt="Mobile View" loading="lazy" decoding="async" />
               </div>
             )}
           </div>
@@ -92,7 +113,7 @@ export function ExpandedProject({ project, onClose }) {
         </div>
 
         {/* Detailed Body Section */}
-        {(project.features || project.challenges || project.learned || project.technologies) && (
+        {showContent && (project.features || project.challenges || project.learned || project.technologies) && (
           <div className="flex flex-col lg:flex-row p-8 lg:p-12 gap-12 border-t border-border/50">
             
             {/* Main Info */}
@@ -157,4 +178,4 @@ export function ExpandedProject({ project, onClose }) {
       </motion.div>
     </motion.div>
   )
-}
+})

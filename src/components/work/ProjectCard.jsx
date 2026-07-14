@@ -1,3 +1,4 @@
+import React from "react"
 import { motion } from "framer-motion"
 import { ExternalLink } from "lucide-react"
 import { cn } from "../../lib/utils"
@@ -9,7 +10,7 @@ const GithubIcon = ({ className }) => (
   </svg>
 )
 
-export function ProjectCard({ project, onClick }) {
+export const ProjectCard = React.memo(function ProjectCard({ project, onClick }) {
   if (project.type === "hero") {
     return <HeroProjectCard project={project} onClick={onClick} />
   }
@@ -19,26 +20,31 @@ export function ProjectCard({ project, onClick }) {
   }
 
   return <CompactProjectCard project={project} onClick={onClick} />
-}
+})
 
 function HeroProjectCard({ project, onClick }) {
   return (
     <motion.div
-      layoutId={`card-${project.id}`}
       onClick={onClick}
-      className="group relative flex flex-col lg:flex-row w-full overflow-hidden rounded-[2.5rem] border border-border/40 bg-background/30 backdrop-blur-md shadow-2xl hover:border-blue-500/30 hover:shadow-blue-500/10 transition-all duration-500 cursor-pointer"
+      className="group relative flex flex-col lg:flex-row w-full overflow-hidden rounded-[2.5rem] border border-border/40 bg-background/95 shadow-xl hover:border-blue-500/30 hover:shadow-blue-500/10 transition-colors transition-shadow duration-300 cursor-pointer"
     >
       {/* Left Gallery */}
-      <div className="relative w-full lg:w-[55%] h-[300px] lg:h-[500px] flex items-center justify-center bg-muted/10 p-4 lg:p-8 gap-4 lg:gap-6">
+      <div className="relative w-full lg:w-[55%] h-[300px] lg:h-[500px] flex items-center justify-center bg-muted/10 p-4 lg:p-8 gap-4 lg:gap-6 overflow-hidden">
         <div className="relative w-full sm:w-[75%] h-full flex items-center justify-center">
           <ProjectGallery images={project.images} className="rounded-xl border border-border/50 shadow-xl overflow-hidden bg-background" />
         </div>
         
         {project.mobileImage && (
           <div className="relative w-[25%] max-w-[140px] aspect-[9/19] rounded-[1.5rem] border-[4px] border-zinc-800 bg-black shadow-2xl overflow-hidden z-10 hidden sm:block">
-            <img src={project.mobileImage} className="w-full h-full object-cover" alt="Mobile View" />
+            <img src={project.mobileImage} className="w-full h-full object-cover" alt="Mobile View" loading="lazy" decoding="async" />
           </div>
         )}
+
+        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center pointer-events-none z-30">
+          <div className="translate-y-8 group-hover:translate-y-0 transition-transform duration-500 flex items-center gap-2 bg-foreground text-background px-6 py-2 rounded-full font-semibold">
+            View Details <ExternalLink className="w-4 h-4" />
+          </div>
+        </div>
       </div>
 
       {/* Right Content */}
@@ -51,9 +57,9 @@ function HeroProjectCard({ project, onClick }) {
           ))}
         </div>
 
-        <motion.h3 layoutId={`title-${project.id}`} className="text-3xl lg:text-5xl font-black text-foreground">
+        <h3 className="text-3xl lg:text-5xl font-black text-foreground">
           {project.title}
-        </motion.h3>
+        </h3>
 
         <p className="text-base lg:text-lg text-muted-foreground line-clamp-3">
           {project.description}
@@ -81,12 +87,17 @@ function HeroProjectCard({ project, onClick }) {
 function FeaturedProjectCard({ project, onClick }) {
   return (
     <motion.div
-      layoutId={`card-${project.id}`}
       onClick={onClick}
-      className="group relative flex flex-col w-full h-full overflow-hidden rounded-[2rem] border border-border/40 bg-background/30 backdrop-blur-md shadow-xl hover:border-blue-500/30 hover:shadow-blue-500/10 transition-all duration-500 cursor-pointer hover:-translate-y-2"
+      whileHover={{ y: -8 }}
+      className="group relative flex flex-col w-full h-full overflow-hidden rounded-[2rem] border border-border/40 bg-background/95 shadow-lg hover:border-blue-500/30 hover:shadow-blue-500/10 transition-colors transition-shadow duration-300 cursor-pointer"
     >
-      <div className="relative w-full h-[240px]">
+      <div className="relative w-full h-[240px] overflow-hidden">
         <ProjectGallery images={project.images} />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center pointer-events-none z-30">
+          <div className="translate-y-8 group-hover:translate-y-0 transition-transform duration-500 flex items-center gap-2 bg-foreground text-background px-6 py-2 rounded-full font-semibold">
+            View Details <ExternalLink className="w-4 h-4" />
+          </div>
+        </div>
       </div>
 
       <div className="flex flex-col flex-1 p-6 gap-4">
@@ -98,9 +109,9 @@ function FeaturedProjectCard({ project, onClick }) {
           ))}
         </div>
 
-        <motion.h3 layoutId={`title-${project.id}`} className="text-2xl font-bold text-foreground">
+        <h3 className="text-2xl font-bold text-foreground">
           {project.title}
-        </motion.h3>
+        </h3>
 
         <p className="text-sm text-muted-foreground line-clamp-3 flex-1">
           {project.description}
@@ -113,15 +124,16 @@ function FeaturedProjectCard({ project, onClick }) {
 function CompactProjectCard({ project, onClick }) {
   return (
     <motion.div
-      layoutId={`card-${project.id}`}
       onClick={onClick}
-      className="group relative flex flex-col w-full overflow-hidden rounded-[1.5rem] border border-border/40 bg-background/30 backdrop-blur-md shadow-lg hover:border-blue-500/30 hover:shadow-blue-500/10 transition-all duration-500 cursor-pointer"
+      className="group relative flex flex-col w-full overflow-hidden rounded-[1.5rem] border border-border/40 bg-background/95 shadow-md hover:border-blue-500/30 hover:shadow-blue-500/10 transition-colors transition-shadow duration-300 cursor-pointer"
     >
       <div className="relative w-full aspect-video overflow-hidden">
         <img 
           src={project.images[0]} 
           alt={project.title} 
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          loading="lazy"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
           <div className="translate-y-8 group-hover:translate-y-0 transition-transform duration-500 flex items-center gap-2 bg-foreground text-background px-6 py-2 rounded-full font-semibold">
@@ -132,9 +144,9 @@ function CompactProjectCard({ project, onClick }) {
 
       <div className="flex flex-col p-5 gap-2">
         <div className="flex justify-between items-start">
-          <motion.h3 layoutId={`title-${project.id}`} className="text-lg font-bold text-foreground group-hover:-translate-y-1 transition-transform duration-300">
+          <h3 className="text-lg font-bold text-foreground group-hover:-translate-y-1 transition-transform duration-300">
             {project.title}
-          </motion.h3>
+          </h3>
           {project.badges && (
             <span className="px-2 py-0.5 text-[9px] font-bold tracking-widest text-muted-foreground border border-border/50 rounded-full">
               {project.badges[0]}

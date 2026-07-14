@@ -36,7 +36,7 @@ function Counter({ from, to, duration, inView }) {
 
 export function AnimatedStats() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-50px" })
+  const isInView = useInView(ref, { once: true, amount: 0.1 })
 
   return (
     <div ref={ref} className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -45,7 +45,7 @@ export function AnimatedStats() {
           key={i}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
           whileHover={{ y: -5 }}
           className="flex flex-col items-center justify-center p-4 rounded-2xl border border-border/40 bg-background/40 backdrop-blur-sm shadow-lg hover:border-foreground/20 transition-all duration-300"

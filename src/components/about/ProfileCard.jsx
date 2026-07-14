@@ -8,7 +8,7 @@ export function ProfileCard() {
       <motion.div
         initial={{ opacity: 0, rotate: -15, scale: 0.8 }}
         whileInView={{ opacity: 1, rotate: -6, scale: 1 }}
-        viewport={{ once: true, margin: "-100px" }}
+        viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
         className="absolute inset-0 rounded-[2.5rem] border border-border/30 bg-foreground/5 backdrop-blur-sm z-0"
       />
@@ -17,7 +17,7 @@ export function ProfileCard() {
       <motion.div
         initial={{ opacity: 0, scale: 0.9, y: 20 }}
         whileInView={{ opacity: 1, scale: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
+        viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         whileHover={{ scale: 1.02, rotateY: 5, rotateX: -5 }}
         style={{ perspective: 1000 }}

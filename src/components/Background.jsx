@@ -12,11 +12,11 @@ const ResponsiveAntigravity = () => {
     const handleResize = () => {
       const width = window.innerWidth
       if (width < 768) {
-        setCount(70) // Mobile
+        setCount(40) // Mobile
       } else if (width < 1024) {
-        setCount(120) // Tablet
+        setCount(80) // Tablet
       } else {
-        setCount(200) // Desktop
+        setCount(120) // Desktop
       }
     }
     
@@ -73,30 +73,12 @@ const NoiseOverlay = () => (
 
 const GlowCircles = () => (
   <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-    <motion.div
-      className="absolute -top-[20%] -left-[10%] w-[50vw] h-[50vw] rounded-full bg-blue-500/10 dark:bg-blue-500/20 blur-[120px]"
-      animate={{
-        scale: [1, 1.1, 1],
-        opacity: [0.5, 0.7, 0.5],
-      }}
-      transition={{
-        duration: 8,
-        repeat: Infinity,
-        ease: "easeInOut",
-      }}
+    <div
+      className="absolute -top-[20%] -left-[10%] w-[50vw] h-[50vw] rounded-full bg-blue-500/10 dark:bg-blue-500/20 blur-[80px] will-change-transform animate-pulse"
     />
-    <motion.div
-      className="absolute top-[40%] -right-[10%] w-[40vw] h-[40vw] rounded-full bg-purple-500/10 dark:bg-purple-500/20 blur-[120px]"
-      animate={{
-        scale: [1, 1.2, 1],
-        opacity: [0.5, 0.8, 0.5],
-      }}
-      transition={{
-        duration: 10,
-        repeat: Infinity,
-        ease: "easeInOut",
-        delay: 1,
-      }}
+    <div
+      className="absolute top-[40%] -right-[10%] w-[40vw] h-[40vw] rounded-full bg-purple-500/10 dark:bg-purple-500/20 blur-[80px] will-change-transform animate-pulse"
+      style={{ animationDelay: "1s", animationDuration: "3s" }}
     />
   </div>
 )

@@ -9,7 +9,7 @@ export function AboutContent() {
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.6 }}
           className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight text-foreground"
         >
@@ -19,7 +19,7 @@ export function AboutContent() {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl"
         >

@@ -1,25 +1,25 @@
-import { useState, useEffect } from "react"
+import React, { useState, useCallback } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { cn } from "../../lib/utils"
 
-export function ProjectGallery({ images, className }) {
+export const ProjectGallery = React.memo(function ProjectGallery({ images, className }) {
   const [currentIndex, setCurrentIndex] = useState(0)
 
-  const handleNext = (e) => {
+  const handleNext = useCallback((e) => {
     e.stopPropagation()
     setCurrentIndex((prev) => (prev + 1) % images.length)
-  }
+  }, [images.length])
 
-  const handlePrev = (e) => {
+  const handlePrev = useCallback((e) => {
     e.stopPropagation()
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length)
-  }
+  }, [images.length])
 
-  const goToSlide = (index, e) => {
+  const goToSlide = useCallback((index, e) => {
     e.stopPropagation()
     setCurrentIndex(index)
-  }
+  }, [])
 
   if (!images || images.length === 0) return null
 
@@ -34,9 +34,11 @@ export function ProjectGallery({ images, className }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           className="absolute inset-0 w-full h-full object-contain p-2"
           alt={`Screenshot ${currentIndex + 1}`}
+          loading={currentIndex === 0 ? "eager" : "lazy"}
+          decoding="async"
         />
       </AnimatePresence>
 
@@ -46,13 +48,13 @@ export function ProjectGallery({ images, className }) {
           <div className="absolute inset-0 flex items-center justify-between p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <button
               onClick={handlePrev}
-              className="p-2 rounded-full bg-background/80 backdrop-blur-md border border-border/50 text-foreground hover:bg-background hover:scale-110 transition-all shadow-lg"
+              className="p-2 rounded-full bg-background border border-border/50 text-foreground hover:bg-foreground hover:text-background transition-all shadow-md"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               onClick={handleNext}
-              className="p-2 rounded-full bg-background/80 backdrop-blur-md border border-border/50 text-foreground hover:bg-background hover:scale-110 transition-all shadow-lg"
+              className="p-2 rounded-full bg-background border border-border/50 text-foreground hover:bg-foreground hover:text-background transition-all shadow-md"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
@@ -77,4 +79,4 @@ export function ProjectGallery({ images, className }) {
       )}
     </div>
   )
-}
+})

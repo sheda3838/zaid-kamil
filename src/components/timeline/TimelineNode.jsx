@@ -1,22 +1,20 @@
-import { motion, useScroll, useTransform, useInView } from "framer-motion"
+import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
 import { cn } from "../../lib/utils"
 
 export function TimelineNode({ data, index, total }) {
   const isEven = index % 2 === 0
   const ref = useRef(null)
-  
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start 85%", "center center"]
-  })
-
-  // Fade and scale effect for the node as it enters the viewport
-  const opacity = useTransform(scrollYProgress, [0, 1], [0.3, 1])
-  const scale = useTransform(scrollYProgress, [0, 1], [0.8, 1])
-  const glowOpacity = useTransform(scrollYProgress, [0, 1], [0, 1])
 
   const Icon = data.icon
+
+  // Common animation settings for the node
+  const nodeAnimation = {
+    initial: { opacity: 0.3, scale: 0.8 },
+    whileInView: { opacity: 1, scale: 1 },
+    viewport: { once: true, amount: 0.1 },
+    transition: { duration: 0.5 }
+  }
 
   return (
     <div ref={ref} className="relative flex items-center justify-center w-full my-8 md:my-16">
@@ -31,13 +29,16 @@ export function TimelineNode({ data, index, total }) {
         {/* Center Node */}
         <div className="relative z-10 flex items-center justify-center w-12 h-12 shrink-0">
           <motion.div 
-            style={{ opacity, scale }}
-            className="relative flex items-center justify-center w-10 h-10 rounded-full border border-blue-500/50 bg-background/80 backdrop-blur-md z-10"
+            {...nodeAnimation}
+            className="relative flex items-center justify-center w-10 h-10 rounded-full border border-blue-500/50 bg-background/95 z-10"
           >
             <Icon className="w-4 h-4 text-foreground" />
             <motion.div 
-              style={{ opacity: glowOpacity }}
-              className="absolute inset-0 rounded-full bg-blue-500/20 blur-md -z-10"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="absolute inset-0 rounded-full bg-blue-500/20 blur-md -z-10 will-change-opacity"
             />
           </motion.div>
         </div>
@@ -56,13 +57,16 @@ export function TimelineNode({ data, index, total }) {
         {/* Left Node */}
         <div className="absolute left-[22px] top-8 -translate-x-1/2 z-10 flex items-center justify-center w-10 h-10 shrink-0">
           <motion.div 
-            style={{ opacity, scale }}
-            className="relative flex items-center justify-center w-10 h-10 rounded-full border border-blue-500/50 bg-background/80 backdrop-blur-md z-10"
+            {...nodeAnimation}
+            className="relative flex items-center justify-center w-10 h-10 rounded-full border border-blue-500/50 bg-background/95 z-10"
           >
             <Icon className="w-4 h-4 text-foreground" />
             <motion.div 
-              style={{ opacity: glowOpacity }}
-              className="absolute inset-0 rounded-full bg-blue-500/20 blur-md -z-10"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="absolute inset-0 rounded-full bg-blue-500/20 blur-md -z-10 will-change-opacity"
             />
           </motion.div>
         </div>
@@ -78,17 +82,17 @@ export function TimelineNode({ data, index, total }) {
 
 function TimelineCard({ data, align }) {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const isInView = useInView(ref, { once: true, amount: 0.1 })
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, x: align === "right" ? -50 : 50, filter: "blur(10px)" }}
-      animate={isInView ? { opacity: 1, x: 0, filter: "blur(0px)" } : {}}
+      initial={{ opacity: 0, x: align === "right" ? -50 : 50 }}
+      animate={isInView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 0.7, ease: "easeOut" }}
       whileHover={{ y: -5, scale: 1.02 }}
       className={cn(
-        "relative flex flex-col gap-4 p-6 sm:p-8 rounded-[2rem] border border-border/40 bg-background/30 backdrop-blur-md shadow-lg transition-colors hover:border-blue-500/30 hover:bg-background/40 hover:shadow-blue-500/10",
+        "relative flex flex-col gap-4 p-6 sm:p-8 rounded-[2rem] border border-border/40 bg-background/90 shadow-md transition-colors hover:border-blue-500/30 hover:bg-background/95 hover:shadow-blue-500/10",
         align === "right" ? "items-end text-right" : "items-start text-left",
         "w-full max-w-[500px]"
       )}

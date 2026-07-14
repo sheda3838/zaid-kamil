@@ -20,7 +20,7 @@ export function Highlights() {
             key={i}
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-50px" }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.4, delay: 0.3 + i * 0.1 }}
             whileHover={{ scale: 1.03 }}
             className="group flex flex-col items-center justify-center gap-3 p-4 rounded-2xl border border-border/40 bg-background/30 backdrop-blur-md hover:bg-background/50 hover:border-foreground/20 transition-all duration-300 shadow-lg hover:shadow-xl cursor-default"

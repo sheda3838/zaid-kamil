@@ -24,7 +24,7 @@ export function FeaturedWorkSection() {
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.6 }}
           className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-foreground"
         >
@@ -33,7 +33,7 @@ export function FeaturedWorkSection() {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-lg md:text-xl text-muted-foreground leading-relaxed"
         >
