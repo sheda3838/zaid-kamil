@@ -8,6 +8,7 @@ const AboutSection = React.lazy(() => import("./components/about/AboutSection").
 const TimelineSection = React.lazy(() => import("./components/timeline/TimelineSection").then(module => ({ default: module.TimelineSection })))
 const FeaturedWorkSection = React.lazy(() => import("./components/work/FeaturedWorkSection").then(module => ({ default: module.FeaturedWorkSection })))
 const TechArsenalSection = React.lazy(() => import("./components/tech/TechArsenalSection").then(module => ({ default: module.TechArsenalSection })))
+const AcademicJourneySection = React.lazy(() => import("./components/academic/AcademicJourneySection").then(module => ({ default: module.AcademicJourneySection })))
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <TimelineSection />
             <FeaturedWorkSection />
             <TechArsenalSection />
+            <AcademicJourneySection />
           </Suspense>
         </main>
       </Background>
