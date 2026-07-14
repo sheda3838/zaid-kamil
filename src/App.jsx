@@ -1,6 +1,7 @@
 import React, { Suspense } from "react"
 import { ThemeProvider } from "./components/ThemeProvider"
 import { Background } from "./components/Background"
+import { Navbar } from "./components/navigation/Navbar"
 import { HeroSection } from "./components/hero/HeroSection"
 
 // Lazy load below-the-fold components
@@ -16,6 +17,7 @@ function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="portfolio-theme">
       <Background>
+        <Navbar />
         <main className="relative z-30">
           <HeroSection />
           <Suspense fallback={<div className="h-screen w-full flex items-center justify-center opacity-50">Loading...</div>}>

@@ -18,7 +18,7 @@ export function FeaturedWorkSection() {
   }, [activeProject])
 
   return (
-    <section className="relative w-full py-32 flex flex-col items-center">
+    <section id="featured-work" className="relative w-full py-32 flex flex-col items-center">
       {/* Header */}
       <div className="flex flex-col items-center justify-center gap-6 mb-24 px-6 text-center z-10 max-w-3xl">
         <motion.h2 
