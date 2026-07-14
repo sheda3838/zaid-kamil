@@ -1,10 +1,11 @@
+import { ThemeProvider } from "./components/ThemeProvider"
+import { HeroSection } from "./components/hero/HeroSection"
+
 function App() {
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline bg-pink-300">
-        Hello world!
-      </h1>
-    </div>
+    <ThemeProvider defaultTheme="dark" storageKey="portfolio-theme">
+      <HeroSection />
+    </ThemeProvider>
   )
 }
 
