@@ -16,7 +16,7 @@ const LinkedinIcon = ({ className }) => (
 export function SocialLinks() {
   const links = [
     { icon: GithubIcon, href: "https://github.com/sheda3838", label: "GitHub" },
-    { icon: LinkedinIcon, href: "https://linkedin.com/in/zaidkamil", label: "LinkedIn" },
+    { icon: LinkedinIcon, href: "https://www.linkedin.com/in/kamilzaid/", label: "LinkedIn" },
     { icon: Mail, href: "mailto:kamilzaid53@gmail.com", label: "Email" },
   ]
 

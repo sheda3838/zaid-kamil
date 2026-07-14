@@ -41,7 +41,7 @@ const ResponsiveAntigravity = () => {
   const particleColor = isDark ? "#ffffff" : "#475569" // Crisp white for dark mode, subtle slate for light mode
 
   return (
-    <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-10">
+    <div className="fixed inset-0 w-full h-full overflow-hidden pointer-events-none z-10">
       <Antigravity 
         count={count}
         magnetRadius={6}
@@ -64,7 +64,7 @@ const ResponsiveAntigravity = () => {
 
 const NoiseOverlay = () => (
   <div
-    className="absolute inset-0 pointer-events-none z-20 mix-blend-overlay opacity-30 dark:opacity-20"
+    className="fixed inset-0 pointer-events-none z-20 mix-blend-overlay opacity-30 dark:opacity-20"
     style={{
       backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
     }}
@@ -72,7 +72,7 @@ const NoiseOverlay = () => (
 )
 
 const GlowCircles = () => (
-  <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+  <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
     <motion.div
       className="absolute -top-[20%] -left-[10%] w-[50vw] h-[50vw] rounded-full bg-blue-500/10 dark:bg-blue-500/20 blur-[120px]"
       animate={{
@@ -105,12 +105,12 @@ export function Background({ children, className }) {
   return (
     <div
       className={cn(
-        "relative min-h-[100svh] w-full overflow-hidden bg-background",
+        "relative min-h-screen w-full bg-background",
         className
       )}
     >
       {/* Layer 1: Base Gradient is handled by Tailwind bg-background and subtle overall gradients if needed */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-background z-0" />
+      <div className="fixed inset-0 bg-gradient-to-b from-background via-background/90 to-background z-0" />
 
       {/* Layer 2: Antigravity Particles */}
       <ResponsiveAntigravity />
