@@ -137,80 +137,86 @@ export const clientWork = [
     technologies: ["React", "Tailwind CSS", "Framer Motion"],
     features: ["Responsive Design", "Service Catalog", "Testimonial Carousel", "Contact Form"],
     images: [dfHero, dfAbout, dfServices, dfGallery, dfTestimonials],
-    liveDemo: "https://example.com"
+    github: "https://github.com/sheda3838/dream-flower.git",
+    liveDemo: "https://dream-flower.vercel.app/"
   },
   {
     id: "authentic-gems",
-    title: "Authentic Gems",
+    title: "VIA-Gems – Authentic Gems International",
     badges: ["CLIENT WORK"],
-    description: "A premium catalog showcasing high-value gemstones to international buyers.",
-    technologies: ["Next.js", "Tailwind CSS", "Stripe"],
-    features: ["Product Catalog", "Secure Checkout", "International Shipping Integration", "High-Resolution Image Gallery"],
+    description: "A modern, high-performance single-page luxury UI/UX website built for showcasing premium Ceylon gemstones to global buyers with a trust-focused user experience.",
+    technologies: ["React", "Tailwind CSS", "React Router", "Three.js", "Framer Motion"],
+    features: ["3D Gemstone Hero Section", "Smooth Scroll Navigation", "Certifications Trust Section", "Global Buyers Visualization", "Product Grid", "Testimonial Marquee"],
     images: [agHero, agAbout, agCollection, agCertifications, agBuyers],
-    liveDemo: "https://example.com"
+    github: "https://github.com/sheda3838/authentic-gems.git",
+    liveDemo: "https://authentic-gems.vercel.app/"
   },
   {
     id: "jungle-beach",
-    title: "Jungle Beach",
+    title: "Jungle Beach Camp",
     badges: ["CLIENT WORK"],
-    description: "An immersive landing page for a tropical resort, featuring booking capabilities.",
-    technologies: ["Vue.js", "Nuxt.js", "Tailwind CSS"],
-    features: ["Room Booking System", "Activity Catalog", "Interactive Map", "Multilingual Support"],
+    description: "A premium, cinematic single-page landing page designed for a luxury beach camping experience. Built with a focus on immersive storytelling, high-performance animations, and modern UI/UX principles.",
+    technologies: ["React 19", "Vite", "Tailwind CSS", "Framer Motion", "Lucide React"],
+    features: ["Cinematic Hero Section", "Smooth Storytelling Transitions", "Interactive Activities Showcase", "Pre-rendered Meals Experience", "Mock Contact Form", "WhatsApp Integration"],
     images: [jbHero, jbAbout, jbActivities, jbMeals, jbMemories],
-    liveDemo: "https://example.com"
+    github: "https://github.com/sheda3838/jungle-beach-camp.git",
+    liveDemo: "https://jungle-beach-camp-kohl.vercel.app/"
   },
   {
     id: "orphanage",
-    title: "Orphanage (Yathama)",
+    title: "Yathama",
     badges: ["CLIENT WORK"],
     description: "A charity website enabling easy donations and raising awareness.",
     technologies: ["React", "Node.js", "MongoDB", "Stripe"],
     features: ["Donation Portal", "Blog & News Section", "Volunteer Registration", "Project Showcases"],
     images: [ytHero, ytAbout, ytMission, ytProjects, ytNews],
-    liveDemo: "https://example.com"
+    github: "https://github.com/sheda3838/yathama.git",
+    liveDemo: "https://yathama.vercel.app/"
   },
   {
     id: "gym-website",
-    title: "Gym Website (Fit Life)",
+    title: "Fitness Center – Modern Gym Landing Page",
     badges: ["CLIENT WORK"],
-    description: "A high-conversion landing page for a local gym including membership tiers.",
-    technologies: ["Next.js", "Tailwind CSS", "PostgreSQL"],
-    features: ["Membership Registration", "Class Scheduling", "Trainer Profiles", "Member Dashboard"],
+    description: "A modern, responsive promotional website for a fitness brand. It highlights services, trainers, and membership plans while ensuring a smooth and engaging user experience.",
+    technologies: ["React (Vite)", "Tailwind CSS", "Framer Motion", "React Icons", "Formspree"],
+    features: ["Responsive Design", "Scroll-Based Animations", "Trainer Section Interaction", "Membership Plans UI", "Contact Form Integration"],
     images: [flHero, flAbout, flServices, flTrainers, flPricing],
-    liveDemo: "https://example.com"
+    github: "https://github.com/sheda3838/fitness-sports-center.git",
+    liveDemo: "https://fitness-sports-center.vercel.app/"
   }
 ];
 
 export const engineeringPlayground = [
   {
     id: "crm-app",
-    title: "CRM Application",
-    badges: ["EXPERIMENT"],
-    description: "A custom dashboard for tracking leads and sales pipelines.",
-    technologies: ["React", "Firebase", "Tailwind CSS"],
-    features: ["Lead Tracking", "Sales Pipeline", "Authentication", "Real-Time Analytics"],
-    learned: "Gained experience in state management and real-time database syncing with Firebase.",
+    title: "CRM Lead Management System",
+    badges: ["EXPERIMENT", "FULL STACK"],
+    description: "A high-performance, production-ready CRM solution designed for sales teams to manage pipelines, track lead engagement, and visualize business growth.",
+    technologies: ["React 18", "Node.js", "Express", "SQLite", "Tailwind CSS", "Recharts"],
+    features: ["Lead Lifecycle Management", "Engagement Tracking", "Analytics Dashboard", "Secure JWT Login", "Full CRUD Pipeline"],
+    learned: "Demonstrated integration of modern frontend aesthetics with a robust Node.js backend. Placed a major focus on responsiveness and data visualization.",
     images: [crmDash, crmLeads, crmDetails, crmLogin],
-    github: "https://github.com"
+    github: "https://github.com/sheda3838/crm-application.git"
   },
   {
     id: "service-board",
     title: "Service Request Board",
-    badges: ["EXPERIMENT"],
-    description: "A job board architecture allowing users to post and bid on local tasks.",
-    technologies: ["Next.js", "PostgreSQL", "Prisma"],
-    features: ["Job Posting", "Bidding System", "User Roles", "Database Migrations"],
-    learned: "Learned how to design relational databases using Prisma ORM and Next.js Server Actions.",
+    badges: ["EXPERIMENT", "FULL STACK"],
+    description: "A full-stack web application built for a technical assessment where users can post service requests, view open jobs, and manage statuses.",
+    technologies: ["Next.js", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
+    features: ["Job Board", "Filtering & Search", "JWT Authentication", "Protected Actions", "Status Management"],
+    learned: "Gained experience in integrating a Next.js frontend with an Express backend, JWT authentication, and API testing with Vitest.",
     images: [srBoard, srNew, srRegister, srLogin],
-    github: "https://github.com"
+    github: "https://github.com/sheda3838/service-request-board.git",
+    liveDemo: "https://service-request-board-pearl.vercel.app"
   },
   {
     id: "travel-app",
-    title: "Travel App",
+    title: "Mini Travel Experience Listing Platform",
     badges: ["EXPERIMENT", "MERN STACK"],
     description: "A localized marketplace platform where authenticated users can publish, browse, and search unique travel experiences globally.",
-    technologies: ["React", "Node.js", "Express", "MongoDB", "JWT", "Tailwind CSS"],
-    features: ["JWT Authentication", "Experience Posting", "Global Public Feed", "Full-Text Search", "Pagination"],
+    technologies: ["React (Vite)", "Node.js", "Express", "MongoDB", "JWT", "Tailwind CSS"],
+    features: ["JWT Authentication", "Experience Posting", "Global Public Feed", "CRUD Operations", "Full-Text Search", "Pagination"],
     learned: "Solidified full-stack MERN architecture, robust stateless authentication via JWT, Axios interceptors, and efficient MongoDB document relations using Mongoose.populate().",
     images: [taFeed, taMyExperiences, taModal],
     github: "https://github.com/sheda3838/travel-app.git"
