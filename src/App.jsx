@@ -7,6 +7,7 @@ import { HeroSection } from "./components/hero/HeroSection"
 const AboutSection = React.lazy(() => import("./components/about/AboutSection").then(module => ({ default: module.AboutSection })))
 const TimelineSection = React.lazy(() => import("./components/timeline/TimelineSection").then(module => ({ default: module.TimelineSection })))
 const FeaturedWorkSection = React.lazy(() => import("./components/work/FeaturedWorkSection").then(module => ({ default: module.FeaturedWorkSection })))
+const TechArsenalSection = React.lazy(() => import("./components/tech/TechArsenalSection").then(module => ({ default: module.TechArsenalSection })))
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <AboutSection />
             <TimelineSection />
             <FeaturedWorkSection />
+            <TechArsenalSection />
           </Suspense>
         </main>
       </Background>
