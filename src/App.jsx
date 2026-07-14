@@ -3,6 +3,7 @@ import { Background } from "./components/Background"
 import { HeroSection } from "./components/hero/HeroSection"
 import { AboutSection } from "./components/about/AboutSection"
 import { TimelineSection } from "./components/timeline/TimelineSection"
+import { FeaturedWorkSection } from "./components/work/FeaturedWorkSection"
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <HeroSection />
           <AboutSection />
           <TimelineSection />
+          <FeaturedWorkSection />
         </main>
       </Background>
     </ThemeProvider>
