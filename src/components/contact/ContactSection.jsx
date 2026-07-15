@@ -97,7 +97,7 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="relative w-full min-h-screen lg:h-screen lg:min-h-[800px] flex flex-col justify-center items-center py-24 lg:py-0 overflow-hidden z-10">
+    <section id="contact" className="relative w-full min-h-screen flex flex-col justify-center items-center py-24 lg:py-32 overflow-hidden z-10">
       
       <div className="w-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col h-full lg:justify-center">
         
@@ -133,7 +133,7 @@ export function ContactSection() {
         </div>
 
         {/* 2-Column Layout */}
-        <div className="w-full flex flex-col lg:flex-row gap-8 lg:gap-12 items-stretch lg:h-[500px]">
+        <div className="w-full flex flex-col lg:flex-row gap-8 lg:gap-12 items-stretch">
           
           {/* Left Column - Developer Card */}
           <motion.div 
@@ -145,7 +145,7 @@ export function ContactSection() {
           >
             {/* Glass Profile Card */}
             <div className="relative p-6 lg:p-8 rounded-[2rem] border border-border/40 bg-background/95 shadow-xl hover:shadow-blue-500/10 transition-shadow duration-500 flex flex-col h-full overflow-hidden">
-              <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-br from-blue-500/10 to-purple-500/10 -z-10 blur-2xl" />
+              <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-blue-500/10 to-transparent -z-10" />
               
               <div className="flex items-center gap-6 mb-6">
                 <div className="relative w-20 h-20 md:w-24 md:h-24 shrink-0 rounded-full overflow-hidden border-2 border-blue-500/30">

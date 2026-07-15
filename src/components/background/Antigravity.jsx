@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unknown-property */
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { useMemo, useRef } from 'react';
+import { useMemo, useRef, useEffect } from 'react';
 import * as THREE from 'three';
 
 const AntigravityInner = ({
@@ -23,10 +23,43 @@ const AntigravityInner = ({
   const meshRef = useRef(null);
   const { viewport } = useThree();
   const dummy = useMemo(() => new THREE.Object3D(), []);
+  
+  // Reusable vector to avoid allocations inside loop
+  const targetPos = useMemo(() => new THREE.Vector3(), []);
 
   const lastMousePos = useRef({ x: 0, y: 0 });
   const lastMouseMoveTime = useRef(0);
   const virtualMouse = useRef({ x: 0, y: 0 });
+  
+  // Track if we should render (based on scroll & visibility)
+  const shouldRender = useRef(true);
+
+  useEffect(() => {
+    const checkVisibility = () => {
+      // Pause if tab is hidden
+      if (document.visibilityState === 'hidden') {
+        shouldRender.current = false;
+        return;
+      }
+      
+      // Pause if scrolled past 1.5x viewport height (Background is usually behind everything else)
+      if (window.scrollY > window.innerHeight * 1.5) {
+        shouldRender.current = false;
+        return;
+      }
+      
+      shouldRender.current = true;
+    };
+
+    window.addEventListener('scroll', checkVisibility, { passive: true });
+    document.addEventListener('visibilitychange', checkVisibility);
+    checkVisibility(); // Initial check
+
+    return () => {
+      window.removeEventListener('scroll', checkVisibility);
+      document.removeEventListener('visibilitychange', checkVisibility);
+    };
+  }, []);
 
   const particles = useMemo(() => {
     const temp = [];
@@ -70,6 +103,8 @@ const AntigravityInner = ({
   }, [count, viewport.width, viewport.height]);
 
   useFrame(state => {
+    if (!shouldRender.current) return;
+    
     const mesh = meshRef.current;
     if (!mesh) return;
 
@@ -79,7 +114,8 @@ const AntigravityInner = ({
 
     if (mouseDist > 0.001) {
       lastMouseMoveTime.current = Date.now();
-      lastMousePos.current = { x: m.x, y: m.y };
+      lastMousePos.current.x = m.x;
+      lastMousePos.current.y = m.y;
     }
 
     let destX = (m.x * v.width) / 2;
@@ -101,9 +137,10 @@ const AntigravityInner = ({
     const globalRotation = state.clock.getElapsedTime() * rotationSpeed;
 
     particles.forEach((particle, i) => {
-      let { t, speed, mx, my, mz, cz, randomRadiusOffset } = particle;
+      let { speed, mx, my, mz, cz, randomRadiusOffset } = particle;
 
-      t = particle.t += speed / 2;
+      particle.t += speed / 2;
+      const t = particle.t;
 
       const projectionFactor = 1 - cz / 50;
       const projectedTargetX = targetX * projectionFactor;
@@ -113,7 +150,7 @@ const AntigravityInner = ({
       const dy = my - projectedTargetY;
       const dist = Math.sqrt(dx * dx + dy * dy);
 
-      let targetPos = { x: mx, y: my, z: mz * depthFactor };
+      targetPos.set(mx, my, mz * depthFactor);
 
       if (dist < magnetRadius) {
         const angle = Math.atan2(dy, dx) + globalRotation;
@@ -138,7 +175,8 @@ const AntigravityInner = ({
       dummy.rotateX(Math.PI / 2);
 
       const currentDistToMouse = Math.sqrt(
-        Math.pow(particle.cx - projectedTargetX, 2) + Math.pow(particle.cy - projectedTargetY, 2)
+        (particle.cx - projectedTargetX) * (particle.cx - projectedTargetX) + 
+        (particle.cy - projectedTargetY) * (particle.cy - projectedTargetY)
       );
 
       const distFromRing = Math.abs(currentDistToMouse - ringRadius);
@@ -176,6 +214,7 @@ const Antigravity = props => {
       eventPrefix="client"
       dpr={[1, 1.5]}
       performance={{ min: 0.5 }}
+      gl={{ antialias: false, alpha: true, powerPreference: "high-performance" }}
     >
       <AntigravityInner {...props} />
     </Canvas>
@@ -183,3 +222,4 @@ const Antigravity = props => {
 };
 
 export default Antigravity;
+

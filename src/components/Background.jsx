@@ -64,9 +64,9 @@ const ResponsiveAntigravity = () => {
 
 const NoiseOverlay = () => (
   <div
-    className="fixed inset-0 pointer-events-none z-20 mix-blend-overlay opacity-30 dark:opacity-20"
+    className="fixed inset-0 pointer-events-none z-20 opacity-[0.15] dark:opacity-10"
     style={{
-      backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+      backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
     }}
   />
 )
@@ -74,11 +74,18 @@ const NoiseOverlay = () => (
 const GlowCircles = () => (
   <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
     <div
-      className="absolute -top-[20%] -left-[10%] w-[50vw] h-[50vw] rounded-full bg-blue-500/10 dark:bg-blue-500/20 blur-[80px] will-change-transform animate-pulse"
+      className="absolute -top-[20%] -left-[10%] w-[50vw] h-[50vw] rounded-full will-change-transform animate-pulse"
+      style={{
+        background: 'radial-gradient(circle, rgba(59,130,246,0.12) 0%, rgba(59,130,246,0) 70%)',
+      }}
     />
     <div
-      className="absolute top-[40%] -right-[10%] w-[40vw] h-[40vw] rounded-full bg-purple-500/10 dark:bg-purple-500/20 blur-[80px] will-change-transform animate-pulse"
-      style={{ animationDelay: "1s", animationDuration: "3s" }}
+      className="absolute top-[40%] -right-[10%] w-[40vw] h-[40vw] rounded-full will-change-transform animate-pulse"
+      style={{ 
+        animationDelay: "1s", 
+        animationDuration: "3s",
+        background: 'radial-gradient(circle, rgba(168,85,247,0.12) 0%, rgba(168,85,247,0) 70%)',
+      }}
     />
   </div>
 )
@@ -92,7 +99,7 @@ export function Background({ children, className }) {
       )}
     >
       {/* Layer 1: Base Gradient is handled by Tailwind bg-background and subtle overall gradients if needed */}
-      <div className="fixed inset-0 bg-gradient-to-b from-background via-background/90 to-background z-0" />
+      <div className="fixed inset-0 bg-gradient-to-b from-background via-background/95 to-background z-0" />
 
       {/* Layer 2: Antigravity Particles */}
       <ResponsiveAntigravity />
@@ -108,3 +115,4 @@ export function Background({ children, className }) {
     </div>
   )
 }
+

@@ -79,9 +79,9 @@ export const ExpandedProject = React.memo(function ExpandedProject({ project, on
               ))}
             </div>
 
-            <motion.h2 layoutId={`title-${project.id}`} className="text-3xl lg:text-4xl font-black text-foreground">
+            <h2 className="text-3xl lg:text-4xl font-black text-foreground">
               {project.title}
-            </motion.h2>
+            </h2>
 
             <p className="text-base text-muted-foreground">
               {project.description}
