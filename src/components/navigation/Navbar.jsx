@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 import { Menu, X, Mail, Download } from 'lucide-react';
 import { ThemeToggle } from '../ThemeToggle';
@@ -40,6 +40,9 @@ export function Navbar() {
   const [isHidden, setIsHidden] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const isClickScrolling = useRef(false);
+  const scrollTimeout = useRef(null);
+
   const { scrollY, scrollYProgress } = useScroll();
   
   // Track scroll direction for hiding/showing navbar
@@ -65,11 +68,15 @@ export function Navbar() {
   useEffect(() => {
     const observerOptions = {
       root: null,
-      rootMargin: '-30% 0px -70% 0px', // Trigger slightly before it hits the middle
+      // Create a 20% high band in the middle of the screen
+      rootMargin: '-40% 0px -40% 0px', 
       threshold: 0
     };
 
     const observerCallback = (entries) => {
+      // Ignore observer updates while a smooth scroll is active
+      if (isClickScrolling.current) return;
+
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           setActiveSection(entry.target.id);
@@ -94,9 +101,23 @@ export function Navbar() {
     e.preventDefault();
     setIsMobileMenuOpen(false);
     
+    const targetId = href.substring(1);
+    
+    // Immediately set active state for instant feedback
+    setActiveSection(targetId);
+    
+    // Lock the observer during smooth scroll to prevent intermediate sections from flickering
+    isClickScrolling.current = true;
+    if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
+    scrollTimeout.current = setTimeout(() => {
+      isClickScrolling.current = false;
+    }, 1000);
+
+    // Update URL history naturally without jumping
+    window.history.pushState(null, '', href);
+
     // Slight delay to allow mobile menu to close smoothly before scrolling
     setTimeout(() => {
-      const targetId = href.replace('#', '');
       const element = document.getElementById(targetId);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
@@ -166,20 +187,26 @@ export function Navbar() {
                 href={link.href}
                 onClick={(e) => handleScroll(e, link.href)}
                 className={cn(
-                  "relative px-4 py-1.5 rounded-full text-sm font-medium transition-colors duration-300",
+                  "relative px-4 py-1.5 rounded-full text-sm transition-colors duration-300",
                   activeSection === link.href.substring(1)
-                    ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground"
+                    ? "text-blue-600 dark:text-blue-400 font-bold"
+                    : "text-muted-foreground hover:text-foreground font-medium"
                 )}
               >
                 {activeSection === link.href.substring(1) && (
                   <motion.div
                     layoutId="activeNavBackground"
-                    className="absolute inset-0 bg-background shadow-sm rounded-full -z-10 border border-border/50"
+                    className="absolute inset-0 bg-blue-500/10 dark:bg-blue-500/20 shadow-[0_0_15px_rgba(59,130,246,0.2)] rounded-full -z-10 border border-blue-500/30"
                     transition={{ type: "spring", stiffness: 400, damping: 30 }}
                   />
                 )}
-                <span className="relative z-10">{link.label}</span>
+                <motion.span 
+                  animate={{ scale: activeSection === link.href.substring(1) ? 1.05 : 1 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                  className="relative z-10 inline-block"
+                >
+                  {link.label}
+                </motion.span>
               </a>
             ))}
           </nav>
@@ -257,13 +284,26 @@ export function Navbar() {
                     href={link.href}
                     onClick={(e) => handleScroll(e, link.href)}
                     className={cn(
-                      "px-4 py-3 rounded-xl text-lg font-medium transition-colors",
+                      "relative px-4 py-3 rounded-xl text-lg transition-colors overflow-hidden",
                       activeSection === link.href.substring(1)
-                        ? "bg-blue-500/10 text-blue-500 font-semibold"
-                        : "text-foreground hover:bg-muted/50"
+                        ? "text-blue-600 dark:text-blue-400 font-bold"
+                        : "text-foreground hover:bg-muted/50 font-medium"
                     )}
                   >
-                    {link.label}
+                    {activeSection === link.href.substring(1) && (
+                      <motion.div
+                        layoutId="mobileActiveNavBackground"
+                        className="absolute inset-0 bg-blue-500/10 dark:bg-blue-500/20 shadow-[0_0_15px_rgba(59,130,246,0.2)] border border-blue-500/30 rounded-xl -z-10"
+                        transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                      />
+                    )}
+                    <motion.span
+                      animate={{ scale: activeSection === link.href.substring(1) ? 1.02 : 1 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                      className="relative z-10 inline-block"
+                    >
+                      {link.label}
+                    </motion.span>
                   </motion.a>
                 ))}
               </nav>
