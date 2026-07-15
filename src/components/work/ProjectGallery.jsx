@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { cn } from "../../lib/utils"
 
-export const ProjectGallery = React.memo(function ProjectGallery({ images, className }) {
+export const ProjectGallery = React.memo(function ProjectGallery({ images, className, showControls = false }) {
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const handleNext = useCallback((e) => {
@@ -42,7 +42,7 @@ export const ProjectGallery = React.memo(function ProjectGallery({ images, class
         />
       </AnimatePresence>
 
-      {images.length > 1 && (
+      {images.length > 1 && showControls && (
         <>
           {/* Controls */}
           <div className="absolute inset-0 flex items-center justify-between p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">

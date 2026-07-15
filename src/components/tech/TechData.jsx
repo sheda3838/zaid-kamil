@@ -42,6 +42,7 @@ import iconPython from "../../assets/icons/python.png";
 import iconRestApi from "../../assets/icons/rest-api.png";
 import iconSqlServer from "../../assets/icons/sql-server.png";
 import iconSqlite from "../../assets/icons/sqlite.png";
+import iconJitsi from "../../assets/icons/jitsi.png";
 
 // Fallback lucide icons
 import { Database, Code2, Globe } from "lucide-react";
@@ -52,7 +53,7 @@ const CATEGORY_MAP = {
   "Databases": ["MongoDB", "MySQL", "SQLite", "PostgreSQL", "SQL Server"],
   "AI & Machine Learning": ["Llama 3.2 3B", "OpenAI", "Prompt Engineering"],
   "Cloud & Deployment": ["Cloudinary", "Vercel", "Railway", "TiDB Cloud"],
-  "Tools & Workflow": ["Pusher", "Stripe", "Lucide React", "Formspree", "Recharts", "Git", "GitHub", "Postman", "Agile", "PayHere", "REST API"]
+  "Tools & Workflow": ["Pusher", "Stripe", "Lucide React", "Formspree", "Recharts", "Git", "GitHub", "Postman", "Agile", "PayHere", "REST API", "Jitsi Meet"]
 };
 
 // Normalize names
@@ -105,7 +106,8 @@ const getTechIcon = (name) => {
     "PayHere": <img src={iconPayhere} alt="PayHere" className="w-5 h-5 object-contain bg-white rounded p-[2px]" />,
     "REST API": <img src={iconRestApi} alt="REST API" className="w-5 h-5 object-contain" />,
     "Vercel": <img src={iconVercel} alt="Vercel" className="w-5 h-5 object-contain bg-white rounded-full p-[2px]" />,
-    "Railway": <img src={iconRailway} alt="Railway" className="w-5 h-5 object-contain bg-white rounded-full p-[2px]" />
+    "Railway": <img src={iconRailway} alt="Railway" className="w-5 h-5 object-contain bg-white rounded-full p-[2px]" />,
+    "Jitsi Meet": <img src={iconJitsi} alt="Jitsi Meet" className="w-5 h-5 object-contain bg-white rounded p-[2px]" />
   };
   
   return map[name] || <Code2 className="w-5 h-5 text-gray-400" />;
@@ -178,6 +180,24 @@ export const getCategorizedTech = () => {
         };
     }
     tech.projects.forEach(p => techMap[tech.name].projects.add(p));
+  });
+
+  // 1.5 Manual Overrides for "Used in" Tooltips
+  const manualOverrides = {
+    "Next.js": ["Roomy", "Service Request Board"],
+    "Node.js": ["Roomy", "Mia", "TuteSkillz", "CRM Lead Management System", "Service Request Board", "Mini Travel Experience Listing Platform"],
+    "Express": ["Roomy", "Mia", "TuteSkillz", "CRM Lead Management System", "Service Request Board", "Mini Travel Experience Listing Platform"],
+    "C#": ["Gym App"],
+    "MongoDB": ["Roomy", "Service Request Board", "Mini Travel Experience Listing Platform"],
+    "SQL Server": ["Gym App"],
+    "Stripe": ["Unique Palette"],
+    "Agile": ["TuteSkillz"]
+  };
+
+  Object.entries(manualOverrides).forEach(([techName, projectList]) => {
+    if (techMap[techName]) {
+      techMap[techName].projects = new Set(projectList);
+    }
   });
 
   // 2. Format into Category Arrays

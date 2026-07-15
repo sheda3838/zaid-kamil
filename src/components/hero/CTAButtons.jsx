@@ -6,6 +6,7 @@ export function CTAButtons() {
   return (
     <div className="flex flex-col sm:flex-row gap-4 mt-8">
       <motion.button
+        onClick={() => document.getElementById('featured-work')?.scrollIntoView({ behavior: 'smooth' })}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
         className="group relative flex items-center justify-center gap-2 overflow-hidden rounded-full bg-foreground px-8 py-3.5 text-background transition-all hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] dark:hover:shadow-[0_0_20px_rgba(255,255,255,0.2)]"

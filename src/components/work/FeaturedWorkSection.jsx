@@ -37,7 +37,7 @@ export function FeaturedWorkSection() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-lg md:text-xl text-muted-foreground leading-relaxed"
         >
-          Every project represents a different challenge—from AI-powered applications and full-stack systems to real-world client websites and engineering experiments.
+          Every project represents a different challenge from AI-powered applications and full-stack systems to real-world client websites and engineering experiments.
         </motion.p>
       </div>
 

@@ -57,16 +57,16 @@ export const ExpandedProject = React.memo(function ExpandedProject({ project, on
         {/* Top Header Section */}
         <div className="flex flex-col lg:flex-row w-full min-h-[400px]">
           {/* Gallery */}
-          <div className="relative flex items-center justify-center w-full lg:w-[60%] h-[300px] lg:h-auto min-h-[400px] bg-muted/10 p-6 lg:p-12 gap-4 lg:gap-8">
-            <div className="relative w-full sm:w-[75%] h-full flex items-center justify-center">
-              <ProjectGallery images={project.images} className="rounded-2xl border border-border/50 shadow-2xl overflow-hidden bg-background" />
+          <div className="relative flex items-center justify-center w-full lg:w-[60%] h-[300px] lg:h-auto min-h-[400px] bg-muted/10 p-6 lg:p-16 overflow-hidden">
+            <div className="relative w-full h-full flex items-center justify-center">
+              <ProjectGallery images={project.images} showControls={true} className="rounded-2xl border border-border/50 shadow-2xl overflow-hidden bg-background w-full h-full" />
+              
+              {project.mobileImage && (
+                <div className="absolute -bottom-4 -right-4 lg:-bottom-8 lg:-right-8 w-[30%] max-w-[180px] aspect-[9/19] rounded-[2rem] border-[6px] border-zinc-800 bg-black shadow-2xl overflow-hidden z-20 hidden sm:block">
+                  <img src={project.mobileImage} className="w-full h-full object-cover" alt="Mobile View" loading="lazy" decoding="async" />
+                </div>
+              )}
             </div>
-
-            {project.mobileImage && (
-              <div className="relative w-[25%] max-w-[160px] aspect-[9/19] rounded-[2rem] border-[6px] border-zinc-800 bg-black shadow-2xl overflow-hidden z-10 hidden sm:block flex-shrink-0">
-                <img src={project.mobileImage} className="w-full h-full object-cover" alt="Mobile View" loading="lazy" decoding="async" />
-              </div>
-            )}
           </div>
 
           {/* Quick Details */}

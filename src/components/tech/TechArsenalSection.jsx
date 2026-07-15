@@ -107,7 +107,7 @@ export function TechArsenalSection() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-lg md:text-xl text-muted-foreground leading-relaxed italic"
         >
-          "I don't just learn technologies—I use them to build real-world solutions."
+          "I don't just learn technologies, I use them to build real-world solutions."
         </motion.p>
       </div>
 

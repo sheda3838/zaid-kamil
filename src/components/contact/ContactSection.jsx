@@ -472,7 +472,7 @@ export function ContactSection() {
                   <label
                     htmlFor="name"
                     className={cn(
-                      "absolute left-4 top-4 text-xs font-bold uppercase tracking-widest transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-4 peer-placeholder-shown:normal-case peer-placeholder-shown:font-medium peer-focus:top-2 peer-focus:text-[10px] peer-focus:font-bold peer-focus:uppercase cursor-text",
+                      "absolute left-4 top-2 text-[10px] font-bold uppercase tracking-widest transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-4 peer-placeholder-shown:normal-case peer-placeholder-shown:font-medium peer-focus:top-2 peer-focus:text-[10px] peer-focus:font-bold peer-focus:uppercase cursor-text",
                       errors.name
                         ? "text-red-400 peer-focus:text-red-500"
                         : "text-muted-foreground peer-focus:text-blue-500",
@@ -512,7 +512,7 @@ export function ContactSection() {
                   <label
                     htmlFor="email"
                     className={cn(
-                      "absolute left-4 top-4 text-xs font-bold uppercase tracking-widest transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-4 peer-placeholder-shown:normal-case peer-placeholder-shown:font-medium peer-focus:top-2 peer-focus:text-[10px] peer-focus:font-bold peer-focus:uppercase cursor-text",
+                      "absolute left-4 top-2 text-[10px] font-bold uppercase tracking-widest transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-4 peer-placeholder-shown:normal-case peer-placeholder-shown:font-medium peer-focus:top-2 peer-focus:text-[10px] peer-focus:font-bold peer-focus:uppercase cursor-text",
                       errors.email
                         ? "text-red-400 peer-focus:text-red-500"
                         : "text-muted-foreground peer-focus:text-blue-500",
@@ -552,7 +552,7 @@ export function ContactSection() {
                   <label
                     htmlFor="subject"
                     className={cn(
-                      "absolute left-4 top-4 text-xs font-bold uppercase tracking-widest transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-4 peer-placeholder-shown:normal-case peer-placeholder-shown:font-medium peer-focus:top-2 peer-focus:text-[10px] peer-focus:font-bold peer-focus:uppercase cursor-text",
+                      "absolute left-4 top-2 text-[10px] font-bold uppercase tracking-widest transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-4 peer-placeholder-shown:normal-case peer-placeholder-shown:font-medium peer-focus:top-2 peer-focus:text-[10px] peer-focus:font-bold peer-focus:uppercase cursor-text",
                       errors.subject
                         ? "text-red-400 peer-focus:text-red-500"
                         : "text-muted-foreground peer-focus:text-blue-500",
@@ -591,7 +591,7 @@ export function ContactSection() {
                   <label
                     htmlFor="message"
                     className={cn(
-                      "absolute left-4 top-4 text-xs font-bold uppercase tracking-widest transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-4 peer-placeholder-shown:normal-case peer-placeholder-shown:font-medium peer-focus:top-2 peer-focus:text-[10px] peer-focus:font-bold peer-focus:uppercase cursor-text",
+                      "absolute left-4 top-2 text-[10px] font-bold uppercase tracking-widest transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-4 peer-placeholder-shown:normal-case peer-placeholder-shown:font-medium peer-focus:top-2 peer-focus:text-[10px] peer-focus:font-bold peer-focus:uppercase cursor-text",
                       errors.message
                         ? "text-red-400 peer-focus:text-red-500"
                         : "text-muted-foreground peer-focus:text-blue-500",

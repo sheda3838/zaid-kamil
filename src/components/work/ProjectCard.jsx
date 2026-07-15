@@ -29,16 +29,16 @@ function HeroProjectCard({ project, onClick }) {
       className="group relative flex flex-col lg:flex-row w-full overflow-hidden rounded-[2.5rem] border border-border/40 bg-background/95 shadow-xl hover:border-blue-500/30 hover:shadow-blue-500/10 transition-colors transition-shadow duration-300 cursor-pointer"
     >
       {/* Left Gallery */}
-      <div className="relative w-full lg:w-[55%] h-[300px] lg:h-[500px] flex items-center justify-center bg-muted/10 p-4 lg:p-8 gap-4 lg:gap-6 overflow-hidden">
-        <div className="relative w-full sm:w-[75%] h-full flex items-center justify-center">
-          <ProjectGallery images={project.images} className="rounded-xl border border-border/50 shadow-xl overflow-hidden bg-background" />
+      <div className="relative w-full lg:w-[55%] h-[300px] lg:h-[500px] flex items-center justify-center bg-muted/10 p-6 lg:p-12 overflow-hidden">
+        <div className="relative w-full h-full flex items-center justify-center">
+          <ProjectGallery images={project.images} className="rounded-2xl border border-border/50 shadow-xl overflow-hidden bg-background w-full h-full" />
+          
+          {project.mobileImage && (
+            <div className="absolute -bottom-2 -right-2 lg:-bottom-6 lg:-right-6 w-[28%] max-w-[150px] aspect-[9/19] rounded-[1.5rem] border-[4px] lg:border-[6px] border-zinc-800 bg-black shadow-2xl overflow-hidden z-20 hidden sm:block group-hover:-translate-y-2 group-hover:-translate-x-2 transition-transform duration-500">
+              <img src={project.mobileImage} className="w-full h-full object-cover" alt="Mobile View" loading="lazy" decoding="async" />
+            </div>
+          )}
         </div>
-        
-        {project.mobileImage && (
-          <div className="relative w-[25%] max-w-[140px] aspect-[9/19] rounded-[1.5rem] border-[4px] border-zinc-800 bg-black shadow-2xl overflow-hidden z-10 hidden sm:block">
-            <img src={project.mobileImage} className="w-full h-full object-cover" alt="Mobile View" loading="lazy" decoding="async" />
-          </div>
-        )}
 
         <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center pointer-events-none z-30">
           <div className="translate-y-8 group-hover:translate-y-0 transition-transform duration-500 flex items-center gap-2 bg-foreground text-background px-6 py-2 rounded-full font-semibold">

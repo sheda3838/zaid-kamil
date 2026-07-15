@@ -28,7 +28,7 @@ const NAV_LINKS = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
   { label: 'Journey', href: '#journey' },
-  { label: 'Work', href: '#featured-work' },
+  { label: 'Projects', href: '#featured-work' },
   { label: 'Tech', href: '#tech-arsenal' },
   { label: 'Academic', href: '#academic-journey' },
   { label: 'Contact', href: '#contact' },
