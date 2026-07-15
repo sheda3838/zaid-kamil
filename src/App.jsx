@@ -18,7 +18,7 @@ function App() {
     <ThemeProvider defaultTheme="dark" storageKey="portfolio-theme">
       <Background>
         <Navbar />
-        <main className="relative z-30">
+        <main className="relative">
           <HeroSection />
           <Suspense fallback={<div className="h-screen w-full flex items-center justify-center opacity-50">Loading...</div>}>
             <AboutSection />

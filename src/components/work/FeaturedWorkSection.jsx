@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { createPortal } from "react-dom"
 import { motion, AnimatePresence } from "framer-motion"
 import { featuredProjects, clientWork, engineeringPlayground } from "./ProjectsData"
 import { ProjectCard } from "./ProjectCard"
@@ -102,14 +103,17 @@ export function FeaturedWorkSection() {
       </div>
 
       {/* Expanded Modal Overlay */}
-      <AnimatePresence>
-        {activeProject && (
-          <ExpandedProject 
-            project={activeProject} 
-            onClose={() => setActiveProject(null)} 
-          />
-        )}
-      </AnimatePresence>
+      {typeof document !== 'undefined' && createPortal(
+        <AnimatePresence>
+          {activeProject && (
+            <ExpandedProject 
+              project={activeProject} 
+              onClose={() => setActiveProject(null)} 
+            />
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </section>
   )
 }
