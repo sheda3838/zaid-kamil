@@ -1,7 +1,5 @@
 # Zaid Kamil - Software Engineer Portfolio
 
-![Portfolio Preview](./public/og-image.jpg)
-
 A modern, highly performant, and interactive personal portfolio showcasing my engineering journey, software projects, and technical skills. Built with the latest frontend technologies focusing on beautiful UI/UX, 3D background interactions, and lightning-fast performance.
 
 ## Key Features
