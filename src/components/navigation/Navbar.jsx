@@ -144,6 +144,17 @@ export function Navbar() {
     return () => { document.body.style.overflow = 'unset'; };
   }, [isMobileMenuOpen]);
 
+  // Global event listener for external CTA buttons
+  useEffect(() => {
+    const handleCustomScroll = (e) => {
+      // Mock event object with preventDefault
+      const mockEvent = { preventDefault: () => {} };
+      handleScroll(mockEvent, e.detail);
+    };
+    window.addEventListener('nav-scroll', handleCustomScroll);
+    return () => window.removeEventListener('nav-scroll', handleCustomScroll);
+  }, []);
+
   return (
     <>
       {/* Desktop Navigation */}
