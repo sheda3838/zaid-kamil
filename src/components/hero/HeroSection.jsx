@@ -1,4 +1,4 @@
-import { ThemeToggle } from "../ThemeToggle"
+
 import { HeroLeft } from "./HeroLeft"
 import { HeroRight } from "./HeroRight"
 import { ScrollIndicator } from "./ScrollIndicator"

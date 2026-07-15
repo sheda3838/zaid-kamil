@@ -1,4 +1,4 @@
-import { motion, useScroll, useSpring, useTransform } from "framer-motion"
+import { motion, useScroll, useSpring } from "framer-motion"
 import { useRef } from "react"
 import { timelineData } from "./TimelineData"
 import { TimelineNode } from "./TimelineNode"

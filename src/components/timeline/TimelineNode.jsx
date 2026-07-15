@@ -2,7 +2,7 @@ import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
 import { cn } from "../../lib/utils"
 
-export function TimelineNode({ data, index, total }) {
+export function TimelineNode({ data, index }) {
   const isEven = index % 2 === 0
   const ref = useRef(null)
 

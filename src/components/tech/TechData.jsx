@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { featuredProjects, clientWork, engineeringPlayground } from "../work/ProjectsData";
 
 // Icons
@@ -45,7 +45,7 @@ import iconSqlite from "../../assets/icons/sqlite.png";
 import iconJitsi from "../../assets/icons/jitsi.png";
 
 // Fallback lucide icons
-import { Database, Code2, Globe } from "lucide-react";
+import { Code2 } from "lucide-react";
 
 const CATEGORY_MAP = {
   "Frontend": ["React", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS", "Framer Motion", "Three.js", "React Router", "Vite", "React Icons", "HTML/CSS"],

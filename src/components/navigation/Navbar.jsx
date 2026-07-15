@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 import { Menu, X, Mail, Download } from 'lucide-react';
 import { ThemeToggle } from '../ThemeToggle';
@@ -37,7 +37,6 @@ const NAV_LINKS = [
 export function Navbar() {
   const [activeSection, setActiveSection] = useState('home');
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isHidden, setIsHidden] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const isClickScrolling = useRef(false);
@@ -47,20 +46,11 @@ export function Navbar() {
   
   // Track scroll direction for hiding/showing navbar
   useMotionValueEvent(scrollY, "change", (latest) => {
-    const previous = scrollY.getPrevious();
-    
     // Check if scrolled past top
     if (latest > 40) {
       setIsScrolled(true);
     } else {
       setIsScrolled(false);
-    }
-
-    // Hide navbar on scroll down, show on scroll up
-    if (latest > previous && latest > 150) {
-      setIsHidden(true);
-    } else {
-      setIsHidden(false);
     }
   });
 
@@ -280,6 +270,7 @@ export function Navbar() {
                 <button 
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="p-2 rounded-full bg-muted/50 hover:bg-muted text-foreground transition-colors"
+                  aria-label="Close menu"
                 >
                   <X className="w-5 h-5" />
                 </button>

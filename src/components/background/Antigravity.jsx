@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unknown-property */
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
+/* eslint-disable react-hooks/purity */
 import { useMemo, useRef, useEffect } from 'react';
 import * as THREE from 'three';
 

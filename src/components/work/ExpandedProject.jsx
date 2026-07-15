@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { X, ExternalLink, Code2, ShieldAlert, Lightbulb } from "lucide-react"
 import { ProjectGallery } from "./ProjectGallery"
-import { cn } from "../../lib/utils"
 
 const GithubIcon = ({ className }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" className={className}>
@@ -55,7 +54,7 @@ export const ExpandedProject = React.memo(function ExpandedProject({ project, on
         </button>
 
         {/* Top Header Section */}
-        <div className="flex flex-col lg:flex-row w-full min-h-[400px]">
+        <div className="flex flex-col lg:flex-row w-full min-h-[400px] shrink-0">
           {/* Gallery */}
           <div className="relative flex items-center justify-center w-full lg:w-[60%] h-[300px] lg:h-auto min-h-[400px] bg-muted/10 p-6 lg:p-16 overflow-hidden">
             <div className="relative w-full h-full flex items-center justify-center">
@@ -87,7 +86,7 @@ export const ExpandedProject = React.memo(function ExpandedProject({ project, on
               {project.description}
             </p>
 
-            <div className="flex flex-wrap gap-3 mt-auto pt-6">
+            <div className="flex flex-wrap gap-3 mt-6 relative z-20">
               {project.liveDemo && (
                 <a
                   href={project.liveDemo}
@@ -114,7 +113,7 @@ export const ExpandedProject = React.memo(function ExpandedProject({ project, on
 
         {/* Detailed Body Section */}
         {showContent && (project.features || project.challenges || project.learned || project.technologies) && (
-          <div className="flex flex-col lg:flex-row p-8 lg:p-12 gap-12 border-t border-border/50">
+          <div className="flex flex-col lg:flex-row p-8 lg:p-12 gap-12 border-t border-border/50 shrink-0">
             
             {/* Main Info */}
             <div className="flex flex-col w-full lg:w-[65%] gap-10">

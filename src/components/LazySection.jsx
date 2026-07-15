@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export function LazySection({ children, rootMargin = '400px', minHeight = '100vh' }) {
   const [hasIntersected, setHasIntersected] = useState(false);

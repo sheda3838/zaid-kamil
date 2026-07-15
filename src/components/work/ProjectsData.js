@@ -181,7 +181,7 @@ export const clientWork = [
     features: ["Responsive Design", "Scroll-Based Animations", "Trainer Section Interaction", "Membership Plans UI", "Contact Form Integration"],
     images: [flHero, flAbout, flServices, flTrainers, flPricing],
     github: "https://github.com/sheda3838/fitness-sports-center.git",
-    liveDemo: "https://fitness-sports-center.vercel.app/"
+    liveDemo: "https://fitness-sports-center-zq3a.vercel.app/"
   }
 ];
 
@@ -206,8 +206,7 @@ export const engineeringPlayground = [
     features: ["Job Board", "Filtering & Search", "JWT Authentication", "Protected Actions", "Status Management"],
     learned: "Gained experience in integrating a Next.js frontend with an Express backend, JWT authentication, and API testing with Vitest.",
     images: [srBoard, srNew, srRegister, srLogin],
-    github: "https://github.com/sheda3838/service-request-board.git",
-    liveDemo: "https://service-request-board-pearl.vercel.app"
+    github: "https://github.com/sheda3838/service-request-board.git"
   },
   {
     id: "travel-app",
