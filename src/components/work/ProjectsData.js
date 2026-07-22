@@ -70,6 +70,11 @@ import taFeed from "../../assets/projects/travel-app/feed.png"
 import taModal from "../../assets/projects/travel-app/modal.png"
 import taMyExperiences from "../../assets/projects/travel-app/myExperiences.png"
 
+import tmDash from "../../assets/projects/task-manager/dashboard.png"
+import tmLogin from "../../assets/projects/task-manager/login.png"
+import tmNew from "../../assets/projects/task-manager/new-task.png"
+import tmDialog from "../../assets/projects/task-manager/task-dialog.png"
+
 export const featuredProjects = [
   {
     id: "roomy",
@@ -218,5 +223,16 @@ export const engineeringPlayground = [
     learned: "Solidified full-stack MERN architecture, robust stateless authentication via JWT, Axios interceptors, and efficient MongoDB document relations using Mongoose.populate().",
     images: [taFeed, taMyExperiences, taModal],
     github: "https://github.com/sheda3838/travel-app.git"
+  },
+  {
+    id: "task-manager",
+    title: "Task Management System",
+    badges: ["LEARNING PROJECT", "FULL STACK"],
+    description: "A full-stack task management application featuring secure JWT authentication, dashboard analytics, task CRUD operations, advanced search, filtering, sorting, pagination, and a responsive user experience powered by a RESTful API.",
+    technologies: ["React (Vite)", "Tailwind CSS", "shadcn/ui", "Node.js", "Express.js", "MySQL", "JWT", "Vitest", "Zod"],
+    features: ["JWT Authentication", "Task CRUD", "Dashboard Statistics", "Search", "Filtering", "Sorting", "Pagination", "Responsive Design", "Dark / Light Mode", "REST API", "Testing"],
+    images: [tmDash, tmLogin, tmNew, tmDialog],
+    github: "https://github.com/sheda3838/task-manager",
+    liveDemo: "https://task-manager-navy-five-24.vercel.app"
   }
 ];
