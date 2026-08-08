@@ -38,7 +38,7 @@ export const academicData = [
     institution: "APIIT Sri Lanka",
     programme: "BSc (Hons) Computer Science",
     achievement: "Successfully completed Second Year.",
-    highlight: true, // Highlight this as strongest performance
+    highlight: true, 
     icon: Award,
     badges: [
       { text: "First Class", type: "premium" },
